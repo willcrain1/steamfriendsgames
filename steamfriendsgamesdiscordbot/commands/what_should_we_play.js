@@ -12,13 +12,32 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction) {
         if (interaction.isCommand()) {
+            //var AWS = require("aws-sdk");
+            //AWS.config.update({
+            //    region: "us-east-1",
+            //    endpoint: "http://localhost:8000"
+            //})
+            //var dynamodb_client = new AWS.DynamoDB.DocumentClient();
             let options_map = new Map();
             for(let i = 0; i < interaction.options._hoistedOptions.length; i++){
                 options_map.set(interaction.options._hoistedOptions[i].name,interaction.options._hoistedOptions[i].value)
             }
             request('http://127.0.0.1:5000/get_steam_friends/?steam_username_url='+ String(options_map.get('steam_username_url')), function (error, response, body) {
-                console.error('error:', error);
-                console.log('statusCode:', response && response.statusCode);
+                //var params = {
+                //    TableName: 'discord_bot_get_steam_friends',
+                //    Item: {
+                //        "discord_user":interaction.user.username,
+                //        "discord_guild_name":interaction.member.guild.name,
+                //        "discord_guild_id":interaction.member.guild.id,
+                //        "steam_username_url":String(options_map.get('steam_username_url')),
+                //        "error":error,
+                //        "status_code":response.statusCode
+                //    }
+                //}
+                //dynamodb_client.put(params,function(err,data){
+                //    if (err) console.log(err);
+                //    else console.log(data);
+                //})
                 if(body == 'VanityURL not set up'){
                     interaction.reply('Steam profile URL not existing for provided steam_username_url.  Steam nicknames are not unique, so we use Steam profile urls to look up your account.  ' +
                         'For example, if your steam profile url was https://steamcommunity.com/id/psychokilla2193/  then use \'psychokilla2193\' as the argument to the command.  ' +
