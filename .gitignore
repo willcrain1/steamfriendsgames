@@ -1,0 +1,8 @@
+.idea
+
+steamfriendsgamesapi/venv
+steamfriendsgamesapi/__pycache__
+steamfriendsgamesapi/steam_api_key.json
+
+steamfriendsgamesdiscordbot/node_modules
+steamfriendsgamesdiscordbot/config.json
